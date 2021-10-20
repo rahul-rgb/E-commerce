@@ -1,0 +1,77 @@
+<ng-container *ngIf = "cartproduct.length !=0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>MyCart({{checbox}})</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row" id="details" *ngFor="let cartitem of cartproduct">
+                            <div class="col-md-4">
+                                <div class="center">
+                                    <img src="{{cartitem.image}}" alt="" style="width: 100px;">
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <button (click)="removecheckout(cartitem)" id="deletebutton" class="btn btn-danger">x</button>
+                                <div class="right">
+                                   <h6 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100ch;">{{cartitem.title}}</h6>
+                                   <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100ch;">{{cartitem.description}}</p>
+                                   <p><strong>Price $</strong> {{cartitem.price*cartitem.quantity}} </p>
+                                   <p><strong>Quantity </strong>  
+                                    <button (click)="decrement(cartitem)" class="btn btn-success"> - </button>
+                                    <span><input readonly value="{{cartitem.quantity}}" type="text" id="text"></span>
+                                    <button (click)="increament(cartitem)" class="btn btn-success"> + </button>
+                                  </p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="righttext">
+                            <h6><strong>Total Price: </strong>{{totalpricevalue}}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Enter Name">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="number" class="form-control" placeholder="Enter phone Number">
+                            
+                        </div>
+                        <br>
+                        <textarea class="form-control" type="text" rows="2" placeholder="Enter Address"></textarea>
+                        <br>
+                        <div class="form-group">
+                            <button class="btn btn-success">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</ng-container>
+
+<ng-container *ngIf="cartproduct.length ==0">
+    <div class="container">
+        <div class="card" id="cardid">
+            <h5 class="card-title" id="cardtitle">My Cart</h5>
+        </div>
+        <div class="center" id="cardcenter">
+            <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90" alt=""/>
+            <h4>Your Checkout is empty!</h4>
+            <h6>Add item to it now!</h6>
+            <button routerLink="/products" class="btn btn-primary">Shop Now</button>
+        </div>
+    </div>
+ </ng-container>
